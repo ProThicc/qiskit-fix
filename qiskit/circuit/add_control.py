@@ -237,6 +237,8 @@ def control(
     else:
         ctrl_substr = ("{0}" * new_num_ctrl_qubits).format("c")
     new_name = f"{ctrl_substr}{base_name}"
+    if new_name == 'cu':
+        operation.params.append(0)
     cgate = controlledgate.ControlledGate(
         new_name,
         controlled_circ.num_qubits,
